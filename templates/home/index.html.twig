@@ -1,0 +1,38 @@
+<h1>Liste des Bacs à Litière</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Dimensions (L x H x P)</th>
+        <th>Matière</th>
+        <th>Quantité en stock</th>
+        <th>Couleur</th>
+        <th>Code barre</th>
+        <th>Marque</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for bac in bacs %}
+        <tr>
+            <td>{{ bac.titre }}</td>
+            <td>{{ bac.description }}</td>
+            <td>{{ bac.dimensions }}</td>
+            <td>{{ bac.matière }}</td>
+            <td>{{ bac.quantité_en_stock }}</td>
+            <td>{{ bac.couleur }}</td>
+            <td>{{ bac.code_barre }}</td>
+            <td>{{ bac.marque.nom }}</td>
+            <td>
+                <a href="{{ path('bac_edit', {'id': bac.id}) }}" class="btn btn-primary">Modifier</a>
+                <form action="{{ path('bac_delete', {'id': bac.id}) }}" method="POST" style="display:inline;">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ bac.id) }}">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('bac_new') }}" class="btn btn-success">Ajouter un nouveau bac à litière</a>

@@ -1,5 +1,46 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+# config/routes.yaml
+
+marque_index:
+    path: /marques
+    controller: App\Controller\MarqueController::index
+    methods: GET
+
+marque_new:
+    path: /marque/new
+    controller: App\Controller\MarqueController::new
+    methods: [GET, POST]
+
+marque_edit:
+    path: /marque/{id}/edit
+    controller: App\Controller\MarqueController::edit
+    methods: [GET, POST]
+
+marque_delete:
+    path: /marque/{id}/delete
+    controller: App\Controller\MarqueController::delete
+    methods: POST
+
+bac_index:
+    path: /bac
+    controller: App\Controller\BacAlitiereController::index
+    methods: GET
+
+bac_new:
+    path: /bac/new
+    controller: App\Controller\BacAlitiereController::new
+    methods: [GET, POST]
+
+bac_edit:
+    path: /bac/{id}/edit
+    controller: App\Controller\BacAlitiereController::edit
+    methods: [GET, POST]
+
+bac_delete:
+    path: /bac/{id}/delete
+    controller: App\Controller\BacAlitiereController::delete
+    methods: POST
+
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+    methods: GET
